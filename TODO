@@ -1,0 +1,10 @@
+You should now have data from *at least* 10 different recipes from the `/search` endpoint on your page, and include the following data:
+
+- The recipe title
+- The source to the recipe and a link to the recipe
+- An image
+- The cooking time
+
+
+
+https://api.edamam.com/search?q=veggie&app_id={appid}&app_key={appkey}&to=10
