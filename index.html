@@ -4,11 +4,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <title>Recipe App</title>
   </head>
   <body>
     <nav class="navbar">
-      <img class="navbar__logo" src="" alt="" />
+      <img class="navbar__logo" src="./assets/logo.png" alt="" />
       <div class="navbar__search">
         <input
           id="searchBar"
@@ -16,9 +21,10 @@
           type="text"
           name="search"
         />
-        <button type="submit" onclick="searchRecipes();">Search</button>
+        <button type="submit" onclick="searchRecipes();">
+          <i class="fa fa-search"></i>
+        </button>
       </div>
-      <div class="navbar__buttons"></div>
     </nav>
     <aside class="filters" id="buttons">
       <button class="filter-option" id="fast">fast</button>
@@ -26,10 +32,10 @@
       <button class="filter-option" id="long">long</button>
     </aside>
     <main class="container">
-      <div class="active-filters"></div>
-      <div id="searchResults" class="search-results">
-        <div class="search-results__item"></div>
+      <div class="filters">
+        <!-- insert filters -->
       </div>
+      <div id="searchResults" class="search-results"></div>
     </main>
     <script src="script.js"></script>
   </body>

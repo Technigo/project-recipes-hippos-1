@@ -41,12 +41,16 @@ const searchRecipes = () => {
 
 const drawResultItem = (resultData) => {
   searchResults.innerHTML += `
-        <div class="title">${resultData.title}</div>
-        <img class="image" src="${resultData.image}"></img>
-        <div class="cook-time">${resultData.cookTime}</div>
+    <div class="search-results__item">
+      <div class="title">${resultData.title}</div>
+      <img class="image" src="${resultData.image}"></img>
+      <div class="cook-time">${resultData.cookTime} min</div>
+      <div class="links">
         <a href="${resultData.viewLink}">Read recipe</a>
-        <a href="${resultData.sourceLink}">View source</a>
-    `;
+        <a href="${resultData.sourceLink}">View source</a>      
+      </div>
+    </div>
+  `;
 };
 
 //cooking time
