@@ -12,10 +12,6 @@ https://api.edamam.com/search?q=veggie&app_id={appid}&app_key={appkey}&to=10
 FEATURES:
 -------------------
 
-1. Style the results items (css)
-2. Style the search bar (css)
-3. Add a function to handle filters (js)
-    - cooking time
-    - ??
-4. Style and filter buttons (html and css)
-5. Make the page responsive (css)
+1. Styling as the design (css)
+2. Filters, function and buttons (html, js)
+3. Make the page responsive (css)
