@@ -9,10 +9,8 @@ const searchResults = document.getElementById("searchResults");
 
 console.log(searchField) */
 
-
-
 const searchRecipes = () => {
-  let searchQuery = document.getElementById("searchBar").value
+  let searchQuery = document.getElementById("searchBar").value;
   fetch(`${API_URL}q=${searchQuery}&app_id=${APP_ID}&app_key=${API_KEY}&to=10`)
     .then((response) => response.json())
     .then((data) => {
@@ -31,12 +29,16 @@ const searchRecipes = () => {
 
 const drawResultItem = (resultData) => {
   searchResults.innerHTML += `
-        <div class="title">${resultData.title}</div>
-        <img class="image" src="${resultData.image}"></img>
-        <div class="cook-time">${resultData.cookTime}</div>
+    <div class="search-results__item">
+      <div class="title">${resultData.title}</div>
+      <img class="image" src="${resultData.image}"></img>
+      <div class="cook-time">${resultData.cookTime} min</div>
+      <div class="links">
         <a href="${resultData.viewLink}">Read recipe</a>
-        <a href="${resultData.sourceLink}">View source</a>
-    `;
+        <a href="${resultData.sourceLink}">View source</a>      
+      </div>
+    </div>
+  `;
 };
 
 searchRecipes();
