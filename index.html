@@ -26,14 +26,30 @@
         </button>
       </div>
     </nav>
-    <aside class="filters" id="buttons">
-      <button class="filter-option" id="fast">fast</button>
-      <button class="filter-option" id="medium">medium</button>
-      <button class="filter-option" id="long">long</button>
-    </aside>
+
     <main class="container">
-      <div class="filters">
-        <!-- insert filters -->
+      <h1>Choose cooking time</h1>
+      <div class="filters" id="filters">
+        <label class="filter-option" id="fast"
+          >Fast
+          <input type="radio" name="radio" value="fast" />
+          <span class="checkmark"></span>
+        </label>
+        <label class="filter-option" id="medium"
+          >Medium
+          <input type="radio" name="radio" value="medium" />
+          <span class="checkmark"></span>
+        </label>
+        <label class="filter-option" id="long"
+          >Long
+          <input type="radio" name="radio" value="long" />
+          <span class="checkmark"></span>
+        </label>
+        <label class="filter-option" id="none"
+          >Clear cooking time filter
+          <input type="radio" checked="checked" name="radio" value="none" />
+          <span class="checkmark"></span>
+        </label>
       </div>
       <div id="searchResults" class="search-results"></div>
     </main>

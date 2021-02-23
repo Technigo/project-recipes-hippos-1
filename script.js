@@ -2,7 +2,7 @@ const API_KEY = "f8a490f34874ecd05c790250dd59f6e9",
   APP_ID = "9c4182eb",
   API_URL = "https://api.edamam.com/search?";
 
-const buttons = document.getElementById("buttons");
+const filters = document.getElementById("filters");
 
 let fast = "1-10";
 let medium = "10-60";
@@ -12,16 +12,21 @@ const cookTimes = {
   medium: "10-60",
   long: "60%2B",
 };
-let selectedKey = null;
+let selectedKey = "none";
 
 // let filterTime = ["1-10", "10-60", "60%2B"];
 
 const searchRecipes = () => {
   searchResults.innerHTML = "";
+  selectedKey = getActiveSelection();
+  let apicall;
   let searchQuery = document.getElementById("searchBar").value;
-  let apicall = `${API_URL}q=${searchQuery}&app_id=${APP_ID}&app_key=${API_KEY}&to=10`;
-  if (selectedKey != null) {
-    apicall += `&time=${cookTimes[selectedKey]}`;
+  let apicallDefault = `${API_URL}q=${searchQuery}&app_id=${APP_ID}&app_key=${API_KEY}&to=10`;
+  let apicallFiltered = `${API_URL}q=${searchQuery}&app_id=${APP_ID}&app_key=${API_KEY}&to=10&time=${cookTimes[selectedKey]}`;
+  if (selectedKey !== "none") {
+    apicall = apicallFiltered;
+  } else {
+    apicall = apicallDefault;
   }
   fetch(apicall)
     .then((response) => response.json())
@@ -36,7 +41,8 @@ const searchRecipes = () => {
           sourceLink: hit.recipe.url,
         });
       });
-    });
+    })
+    .catch((error) => console.log(error));
 };
 
 const drawResultItem = (resultData) => {
@@ -57,17 +63,30 @@ const drawResultItem = (resultData) => {
 
 // searchRecipes();
 
-buttons.addEventListener("click", (event) => {
-  const target = event.target;
-  switch (target.id) {
-    case "fast":
-      selectedKey = "fast";
-      break;
-    case "medium":
-      selectedKey = "medium";
-      break;
-    case "long":
-      selectedKey = "long";
-      break;
-  }
-});
+const getActiveSelection = () => {
+  let activeSelection;
+  filters.querySelectorAll("input").forEach((el) => {
+    if (el.checked === true) {
+      activeSelection = el.value;
+    }
+  });
+  return activeSelection;
+};
+
+// filters.addEventListener("click", (event) => {
+//   const target = event.target;
+//   switch (target.id) {
+//     case "fast":
+//       selectedKey = "fast";
+//       break;
+//     case "medium":
+//       selectedKey = "medium";
+//       break;
+//     case "long":
+//       selectedKey = "long";
+//       break;
+//     case "none":
+//       selectedKey = null;
+//       break;
+//   }
+// });
