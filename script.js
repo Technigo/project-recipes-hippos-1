@@ -2,18 +2,17 @@ const API_KEY = "f8a490f34874ecd05c790250dd59f6e9",
   APP_ID = "9c4182eb",
   API_URL = "https://api.edamam.com/search?";
 
-/* let searchQuery = "fish";
-const searchResults = document.getElementById("searchResults");
+// const fast = "1-10"
+// const medium = "10-60"
+// const long = "60%2B"
 
 
-
-console.log(searchField) */
-
-
+let filterTime = ["1-10", "10-60", "60%2B"];
+  //  filterTime.forEach(element ) 
 
 const searchRecipes = () => {
   let searchQuery = document.getElementById("searchBar").value
-  fetch(`${API_URL}q=${searchQuery}&app_id=${APP_ID}&app_key=${API_KEY}&to=10`)
+  fetch(`${API_URL}q=${searchQuery}&app_id=${APP_ID}&app_key=${API_KEY}&to=10&time=${filterTime}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -27,6 +26,8 @@ const searchRecipes = () => {
         });
       });
     });
+    
+
 };
 
 const drawResultItem = (resultData) => {
@@ -38,5 +39,9 @@ const drawResultItem = (resultData) => {
         <a href="${resultData.sourceLink}">View source</a>
     `;
 };
+
+//cooking time
+
+
 
 searchRecipes();
