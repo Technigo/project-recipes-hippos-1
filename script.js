@@ -2,17 +2,28 @@ const API_KEY = "f8a490f34874ecd05c790250dd59f6e9",
   APP_ID = "9c4182eb",
   API_URL = "https://api.edamam.com/search?";
 
-let fast = "1-10"
-let medium = "10-60"
-let long = "60%2B"
+const buttons = document.getElementById("buttons");
 
+let fast = "1-10";
+let medium = "10-60";
+let long = "60%2B";
+const cookTimes = {
+  fast: "1-10",
+  medium: "10-60",
+  long: "60%2B",
+};
+let selectedKey = null;
 
 // let filterTime = ["1-10", "10-60", "60%2B"];
 
-
 const searchRecipes = () => {
-  let searchQuery = document.getElementById("searchBar").value
-  fetch(`${API_URL}q=${searchQuery}&app_id=${APP_ID}&app_key=${API_KEY}&to=10&time=${fast}`)
+  searchResults.innerHTML = "";
+  let searchQuery = document.getElementById("searchBar").value;
+  let apicall = `${API_URL}q=${searchQuery}&app_id=${APP_ID}&app_key=${API_KEY}&to=10`;
+  if (selectedKey != null) {
+    apicall += `&time=${cookTimes[selectedKey]}`;
+  }
+  fetch(apicall)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -26,8 +37,6 @@ const searchRecipes = () => {
         });
       });
     });
-    
-
 };
 
 const drawResultItem = (resultData) => {
@@ -42,6 +51,19 @@ const drawResultItem = (resultData) => {
 
 //cooking time
 
+// searchRecipes();
 
-
-searchRecipes();
+buttons.addEventListener("click", (event) => {
+  const target = event.target;
+  switch (target.id) {
+    case "fast":
+      selectedKey = "fast";
+      break;
+    case "medium":
+      selectedKey = "medium";
+      break;
+    case "long":
+      selectedKey = "long";
+      break;
+  }
+});

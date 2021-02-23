@@ -10,12 +10,17 @@
     <nav class="navbar">
       <img class="navbar__logo" src="" alt="" />
       <div class="navbar__search">
-        <input id="searchBar" placeholder="Search recipe" type="text" name="search">
+        <input
+          id="searchBar"
+          placeholder="Search recipe"
+          type="text"
+          name="search"
+        />
         <button type="submit" onclick="searchRecipes();">Search</button>
       </div>
       <div class="navbar__buttons"></div>
     </nav>
-    <aside class="filters">
+    <aside class="filters" id="buttons">
       <button class="filter-option" id="fast">fast</button>
       <button class="filter-option" id="medium">medium</button>
       <button class="filter-option" id="long">long</button>
