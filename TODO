@@ -8,3 +8,14 @@ You should now have data from *at least* 10 different recipes from the `/search`
 
 
 https://api.edamam.com/search?q=veggie&app_id={appid}&app_key={appkey}&to=10
+
+FEATURES:
+-------------------
+
+1. Style the results items (css)
+2. Style the search bar (css)
+3. Add a function to handle filters (js)
+    - cooking time
+    - ??
+4. Style and filter buttons (html and css)
+5. Make the page responsive (css)
